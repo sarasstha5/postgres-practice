@@ -9,8 +9,8 @@ JOIN enrollment e
     ON s.s_id = e.s_id
 GROUP BY s.name;
     "
-
-SELECT
+--shows students with total course they have enrolled
+"SELECT
     s.student_name,
     COUNT(c.c_id) AS total_courses
 FROM enrollment e
@@ -19,4 +19,11 @@ JOIN students s
 JOIN courses c
     ON e.c_id = c.c_id
 GROUP BY s.student_name;
+"
+    --ahows courses name with total students
+select c.name, count(s.name) as total_students
+from enrollment e
+join students s on e.s_id = s.s_id
+join courses c on e.c_id = c.c_id
+group by c.name;
 
